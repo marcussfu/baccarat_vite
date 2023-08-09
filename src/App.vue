@@ -1,25 +1,27 @@
 <script setup>
-import { onMounted, inject } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { onMounted, inject } from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
+import Chat from './components/Chat.vue';
 
 onMounted(() => {
-  const socket = inject('socket');
-  const ws = socket('websocket/message');
+  const socket = inject("socket");
+  const ws = socket("websocket/message");
   ws.onopen = () => {
-    let msg = {
-      type: 'screen',
-      classId: 1
-    }
-    ws.send(JSON.stringify(msg))
-  }
+    let msg = "hello world";
+    // {
+    //   type: 'screen',
+    //   classId: 1
+    // }
+    // ws.send(JSON.stringify(msg));
+  };
   ws.onmessage = ({ data }) => {
-    console.log(data);
-  }
+    // console.log(data);
+  };
 });
 </script>
 
 <template>
-  <div>
+  <!-- <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
@@ -27,7 +29,8 @@ onMounted(() => {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue123" />
+  <HelloWorld msg="Vite + Vue123" /> -->
+  <Chat />
 </template>
 
 <style scoped>
