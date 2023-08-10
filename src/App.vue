@@ -1,11 +1,14 @@
 <script setup>
-import { onMounted, inject } from "vue";
+import { ref, onMounted, inject } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import Chat from './components/Chat.vue';
 
 onMounted(() => {
   const socket = inject("socket");
   const ws = socket("websocket/message");
+
+  let receiveData = ref("");
+  let aa = '23232323';
   ws.onopen = () => {
     let msg = "hello world";
     // {
@@ -13,9 +16,15 @@ onMounted(() => {
     //   classId: 1
     // }
     // ws.send(JSON.stringify(msg));
+    console.log('open connection');
   };
   ws.onmessage = ({ data }) => {
-    // console.log(data);
+    aa = data;
+    receiveData.value = data;
+    console.log('receive: ', receiveData.value);
+  };
+  ws.onclose = () => {
+    console.log('close connection');
   };
 });
 </script>
@@ -28,9 +37,9 @@ onMounted(() => {
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
-  </div>
-  <HelloWorld msg="Vite + Vue123" /> -->
-  <Chat />
+  </div> -->
+  <!-- <HelloWorld msg="Vite + Vue123" /> -->
+  <Chat :receiveData="aa" />
 </template>
 
 <style scoped>
