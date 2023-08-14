@@ -1,7 +1,7 @@
 
 const useWebSocket = (handleMessage) => {
-  const baseUrl = import.meta.env.BASE_URL;
-  const port = import.meta.env.WS_PORT;
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const port = import.meta.env.VITE_WS_PORT;
   const wsUrl = `ws://${baseUrl}:${port}/`;
   const ws = new WebSocket(wsUrl);
 
