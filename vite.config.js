@@ -14,6 +14,11 @@ export default defineConfig({
   //   styles: path.resolve(__dirname, 'src/styles'),
   //   plugins: path.resolve(__dirname, 'src/plugins'),
   // },
+  server: {
+    proxy: {
+      '/chatHub': 'http://localhost:5214/chatHub',
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
