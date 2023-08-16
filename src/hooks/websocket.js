@@ -1,4 +1,3 @@
-
 const useWebSocket = (handleMessage) => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const port = import.meta.env.VITE_WS_PORT;
