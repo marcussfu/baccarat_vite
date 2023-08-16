@@ -22,6 +22,11 @@ export default defineConfig({
       include: ["src/**/*.js", "src/**/*.vue", "src/*.js", "src/*.vue"],
     }),
   ],
+  server: {
+    proxy: {
+      "/chatHub": "http://localhost:5214/chatHub",
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
   },
   "dependencies": {
+    "@dreamonkey/vue-signalr": "^1.1.0",
     "@microsoft/signalr": "^7.0.10",
     "@vueuse/core": "^10.3.0",
     "axios": "^1.4.0",
