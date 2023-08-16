@@ -11,28 +11,28 @@
 </template>
 
 <script>
-import { toRefs, reactive, onMounted, inject } from 'vue'
-import { useRouter } from 'vue-router'
+import { toRefs, reactive, onMounted, inject } from "vue";
+import { useRouter } from "vue-router";
 //import { useWebSocket } from '../hooks'
 import * as signalR from "@microsoft/signalr";
-import { useSignalR } from '@dreamonkey/vue-signalr';
+import { useSignalR } from "@dreamonkey/vue-signalr";
 
 export default {
-  name: 'Home',
+  name: "Home",
   setup() {
-    const router = useRouter()
+    const router = useRouter();
     //const ws = useWebSocket(handleMessage)
     const state = reactive({
-      msg: '',
+      msg: "",
       msgList: [],
-    })
+    });
 
-    let username = ''
+    let username = "";
     let hub = reactive({
       connection: {},
       HubConnId: "",
-      resultInfo: {}
-    })
+      resultInfo: {},
+    });
 
     /*const connectionServer = (hub.connection = 
       new signalR.HubConnectionBuilder()
@@ -55,13 +55,13 @@ export default {
     const signalr = useSignalR();
 
     onMounted(() => {
-      username = localStorage.getItem('username')
+      username = localStorage.getItem("username");
 
       if (!username) {
-        router.push('/login')
-        return
+        router.push("/login");
+        return;
       }
-    })
+    });
 
     const handleSendBtnClick = () => {
       /*const _msg = state.msg
@@ -81,10 +81,10 @@ export default {
 
       state.msg = ''*/
 
-      signalr.invoke('SendMessage', username, state.msg);
-    }
+      signalr.invoke("SendMessage", username, state.msg);
+    };
 
-    signalr.on('ReceiveMessage', (username, message) => {
+    signalr.on("ReceiveMessage", (username, message) => {
       state.msgList.push({
         id: new Date().getTime(),
         username: username,
@@ -94,11 +94,11 @@ export default {
 
     function handleMessage(e) {
       // console.log(e)
-      const _msgData = JSON.parse(e.data)
-      state.msgList.push(_msgData)
+      const _msgData = JSON.parse(e.data);
+      state.msgList.push(_msgData);
     }
 
-    return { ...toRefs(state), handleSendBtnClick }
+    return { ...toRefs(state), handleSendBtnClick };
   },
-}
+};
 </script>

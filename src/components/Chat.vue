@@ -1,18 +1,18 @@
 <script setup>
-import { ref, inject } from "vue";
-const props = defineProps({
-  receiveData: String,
-});
-const socket = inject("socket");
-let message = ref("");
+  import { ref, inject } from 'vue';
+  const props = defineProps({
+    receiveData: String,
+  });
+  const socket = inject('socket');
+  let message = ref('');
 
-console.log("RRRRRR", props.receiveData);
+  console.log('RRRRRR', props.receiveData);
 
-const sendMessage = () => {
-  const ws = socket("websocket/message");
-  console.log("send out", message.value);
-  ws.send(message.value);
-};
+  const sendMessage = () => {
+    const ws = socket('websocket/message');
+    console.log('send out', message.value);
+    ws.send(message.value);
+  };
 </script>
 
 <template>
@@ -29,22 +29,22 @@ const sendMessage = () => {
 </template>
 
 <style lang="scss" scoped>
-.textAreaContent {
-  width: 500px;
-  height: 300px;
-  border: 1px black solid;
-}
-.inputContent {
-  width: 500px;
-}
-#txtShow {
-  width: 100%;
-  height: 300px;
-}
-#txtInput {
-  width: 90%;
-}
-#btnSend {
-  width: 10%;
-}
+  .textAreaContent {
+    width: 500px;
+    height: 300px;
+    border: 1px black solid;
+  }
+  .inputContent {
+    width: 500px;
+  }
+  #txtShow {
+    width: 100%;
+    height: 300px;
+  }
+  #txtInput {
+    width: 90%;
+  }
+  #btnSend {
+    width: 10%;
+  }
 </style>

@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import eslintPlugin from "vite-plugin-eslint";
-import path from "path";
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import eslintPlugin from 'vite-plugin-eslint';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,17 +19,17 @@ export default defineConfig({
     vue(),
     // 添加下面这块
     eslintPlugin({
-      include: ["src/**/*.js", "src/**/*.vue", "src/*.js", "src/*.vue"],
+      include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue'],
     }),
   ],
   server: {
     proxy: {
-      "/chatHub": "http://localhost:5214/chatHub",
+      '/chatHub': 'http://localhost:5214/chatHub',
     },
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
 });
