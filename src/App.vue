@@ -48,6 +48,38 @@ onMounted(() => {
 }
 </style> -->
 
-<template>
+<!-- <template>
   <router-view />
+</template> -->
+
+<template>
+  <div id="app">
+    <router-view v-if="isH5" name="h5"></router-view>
+    <router-view v-else name="pc"></router-view>
+  </div>
 </template>
+
+<script>
+export default {
+  name: "app",
+  setup() {
+    const isH5 = ref(true);
+
+    onMounted(() => {
+      isH5.value = checkH5() ? true : false;
+      console.log("isH5", isH5.value);
+    });
+
+    const checkH5 = () => {
+      const flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBroswer|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i,
+      );
+      return flag;
+    };
+
+    return {
+      isH5,
+    };
+  },
+};
+</script>

@@ -20,6 +20,7 @@ export default defineConfig({
     // 添加下面这块
     eslintPlugin({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue'],
+      cache: false
     }),
   ],
   server: {
